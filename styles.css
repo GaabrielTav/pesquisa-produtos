@@ -1,69 +1,68 @@
-/* Reset Básico */
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-  }
-  
-  body {
-    font-family: Arial, sans-serif;
-    line-height: 1.6;
-    background-color: #f5f5f5;
-    color: #333;
-    padding: 20px;
-  }
-  
-  header {
-    text-align: center;
-    margin-bottom: 20px;
-  }
-  
-  .search-section {
-    display: flex;
-    justify-content: center;
-    gap: 10px;
-    margin-bottom: 20px;
-  }
-  
-  #search-input {
-    width: 50%;
-    padding: 10px;
-    font-size: 16px;
-  }
-  
-  #reset-button {
-    padding: 10px 20px;
-    background-color: #3498db;
-    color: white;
-    border: none;
-    cursor: pointer;
-    font-size: 16px;
-  }
-  
-  #reset-button:hover {
-    background-color: #2980b9;
-  }
-  
-  .product-list-section {
-    background: white;
-    padding: 20px;
-    border-radius: 8px;
-    box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
-  }
-  
-  ul {
-    list-style: none;
-  }
-  
-  li {
-    padding: 10px 0;
-    border-bottom: 1px solid #ccc;
-  }
-  
-  li:last-child {
-    border-bottom: none;
-  }
-  
+/* Geral */
+body {
+  font-family: Arial, sans-serif;
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  background-color: #f9f9f9;
+}
+
+/* Header */
+header {
+  text-align: center;
+  background-color: #333;
+  color: white;
+  padding: 10px 0;
+}
+
+/* Search Section */
+.search-section {
+  display: flex;
+  justify-content: center;
+  gap: 10px;
+  padding: 20px;
+}
+
+#search-input {
+  width: 50%;
+  padding: 10px;
+}
+
+#reset-button {
+  background-color: #007bff;
+  color: white;
+  border: none;
+  padding: 10px 20px;
+  cursor: pointer;
+}
+
+#reset-button:hover {
+  background-color: #0056b3;
+}
+
+/* Lista de Produtos */
+.product-list-section {
+  padding: 20px;
+}
+
+#list-product {
+  list-style: none;
+  padding: 0;
+}
+
+#list-product li {
+  padding: 10px 0;
+  border-bottom: 1px solid #ccc;
+}
+
+.filters-section {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  padding: 20px;
+  align-items: center;
+}
+
   footer {
     position: fixed;
     bottom: 0;

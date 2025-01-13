@@ -1,48 +1,55 @@
+// Lista de produtos
 const produtos = [
-    "Notebook Dell",
-    "Mouse Logitech",
-    "Teclado Mecânico",
-    "Monitor Samsung",
-    "Impressora HP",
-    "Fone de Ouvido JBL",
-    "Cadeira Gamer",
-    "Mesa de Escritório"
+    { nome: "Notebook Dell", tipo: "EletrônicoS", preco: 3500 },
+    { nome: "Mouse Logitech", tipo: "EletrônicoS", preco: 120 },
+    { nome: "Teclado Mecânico", tipo: "EletrônicoS", preco: 250 },
+    { nome: "Monitor Samsung", tipo: "EletrônicoS", preco: 800 },
+    { nome: "Impressora HP", tipo: "EletrônicoS", preco: 500 },
+    { nome: "Fone de Ouvido JBL", tipo: "EletrônicoS", preco: 200 },
+    { nome: "Cadeira Gamer", tipo: "Móvel", preco: 1200 },
+    { nome: "Mesa de Escritório", tipo: "Móvel", preco: 700 }
 ];
 
 // Selecionando elementos
 const inputPesquisa = document.querySelector("#search-input");
 const botaoResetar = document.querySelector("#reset-button");
-const listarProdutos = document.querySelector("#list-product");
+const listaProdutos = document.querySelector("#list-product");
+const filtroTipo = document.querySelector("#tipo-select");
+const filtroPrecoMin = document.querySelector("#preco-min");
+const filtroPrecoMax = document.querySelector("#preco-max");
 
-// Função para exibir produtos
-function exibirProduto(filtro = "") {
-    listarProdutos.innerHTML = ""; // Limpa a lista
-console.log('ta certo', exibirProduto)
-    // Filtra os produtos
-    const produtosFiltrados = produtos.filter((produto) =>
-        produto.toLowerCase().includes(filtro.toLowerCase())
-    );
+// Função para exibir produtos com filtros
+function exibirProdutos(filtroNome = "") {
+    // Limpa a lista
+    listaProdutos.innerHTML = "";
 
-    // Exibe os produtos filtrados
+    // Filtra os produtos com base nos critérios
+    const produtosFiltrados = produtos.filter((produto) => {
+        const nomeCondicao = produto.nome.toLowerCase().includes(filtroNome.toLowerCase());
+        const tipoCondicao = filtroTipo.value === "" || produto.tipo === filtroTipo.value;
+        const precoMinCondicao = filtroPrecoMin.value === "" || produto.preco >= Number(filtroPrecoMin.value);
+        const precoMaxCondicao = filtroPrecoMax.value === "" || produto.preco <= Number(filtroPrecoMax.value);
+
+        // Retorna verdadeiro apenas se todas as condições forem atendidas
+        return nomeCondicao && tipoCondicao && precoMinCondicao && precoMaxCondicao;
+    });
+
+    // Exibe os produtos filtrados ou mensagem de erro
     if (produtosFiltrados.length > 0) {
         produtosFiltrados.forEach((produto) => {
             const item = document.createElement("li");
-            item.textContent = produto;
-            listarProdutos.appendChild(item);
+            item.textContent = `${produto.nome} - ${produto.tipo} - R$ ${produto.preco.toFixed(2)}`;
+            listaProdutos.appendChild(item);
         });
     } else {
         const item = document.createElement("li");
-        item.textContent = "Nenhum produto encontrado!";
-        listarProdutos.appendChild(item);
+        item.textContent = "Nenhum produto encontrado.";
+        listaProdutos.appendChild(item);
     }
 }
 
 // Eventos
-inputPesquisa.addEventListener("input", (e) => exibirProduto(e.target.value));
-botaoResetar.addEventListener("click", () => {
-    inputPesquisa.value = "";
-    exibirProduto();
-});
-
-// Exibir todos os produtos inicialmente
-exibirProduto();
+inputPesquisa.addEventListener("input", (e) => exibirProdutos(e.target.value));
+filtroTipo.addEventListener("change", () => exibirProdutos(inputPesquisa.value));
+filtroPrecoMin.addEventListener("input", () => exibirProdutos(inputPesquisa.value));
+filtroPrecoMax.addEventListener("input", () => exibirProdutos(inputPesquisa.value));
