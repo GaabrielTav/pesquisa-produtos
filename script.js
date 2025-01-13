@@ -1,11 +1,11 @@
 // Lista de produtos
 const produtos = [
-    { nome: "Notebook Dell", tipo: "EletrônicoS", preco: 3500 },
-    { nome: "Mouse Logitech", tipo: "EletrônicoS", preco: 120 },
-    { nome: "Teclado Mecânico", tipo: "EletrônicoS", preco: 250 },
-    { nome: "Monitor Samsung", tipo: "EletrônicoS", preco: 800 },
-    { nome: "Impressora HP", tipo: "EletrônicoS", preco: 500 },
-    { nome: "Fone de Ouvido JBL", tipo: "EletrônicoS", preco: 200 },
+    { nome: "Notebook Dell", tipo: "Eletrônicos", preco: 3500 },
+    { nome: "Mouse Logitech", tipo: "Eletrônicos", preco: 120 },
+    { nome: "Teclado Mecânico", tipo: "Eletrônicos", preco: 250 },
+    { nome: "Monitor Samsung", tipo: "Eletrônicos", preco: 800 },
+    { nome: "Impressora HP", tipo: "Eletrônicos", preco: 500 },
+    { nome: "Fone de Ouvido JBL", tipo: "Eletrônicos", preco: 200 },
     { nome: "Cadeira Gamer", tipo: "Móvel", preco: 1200 },
     { nome: "Mesa de Escritório", tipo: "Móvel", preco: 700 }
 ];
@@ -17,6 +17,7 @@ const listaProdutos = document.querySelector("#list-product");
 const filtroTipo = document.querySelector("#tipo-select");
 const filtroPrecoMin = document.querySelector("#preco-min");
 const filtroPrecoMax = document.querySelector("#preco-max");
+
 
 // Função para exibir produtos com filtros
 function exibirProdutos(filtroNome = "") {
